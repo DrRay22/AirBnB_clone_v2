@@ -11,7 +11,9 @@ env.user = "ubuntu"
 
 def deploy():
     """ DEPLOYS """
-    archive_path = do_pack()
-    if archive_path is None:
+    try:
+        archive_path = do_pack()
+    except:
         return False
+
     return do_deploy(archive_path)
