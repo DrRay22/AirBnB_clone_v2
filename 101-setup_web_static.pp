@@ -39,7 +39,7 @@ exec {'content into html':
 exec {'symbolic link':
   provider => shell,
   command  => 'sudo ln -sf /data/web_static/releases/test/ /data/web_static/current',
-  before   => File['put location'],
+  before   => Exec['put location'],
 }
 
 exec {'put location':
@@ -59,5 +59,4 @@ file {'/data/':
   owner   => 'ubuntu',
   group   => 'ubuntu',
   recurse => true,
-  before  => Exec['put location'],
 }
