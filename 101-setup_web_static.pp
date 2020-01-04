@@ -39,11 +39,14 @@ exec {'content into html':
 exec {'symbolic link':
   provider => shell,
   command  => 'sudo ln -sf /data/web_static/releases/test/ /data/web_static/current',
-  before   => Exec['change owner'],
+  before   => File['/data/'],
 }
 
-exec {'change owner':
-  command => '/bin/chown -R ubuntu:ubuntu /data/',
+file {'/data/':
+  ensure  => directory,
+  owner   => 'ubuntu',
+  group   => 'ubuntu',
+  recurse => true,
   before  => Exec['put location'],
 }
 
