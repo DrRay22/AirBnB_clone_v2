@@ -39,7 +39,7 @@ exec {'content into html':
 exec {'symbolic link':
   provider => shell,
   command  => 'sudo ln -sf /data/web_static/releases/test/ /data/web_static/current',
-  before   => Exec['create owner'],
+  before   => Exec['change owner'],
 }
 
 exec {'change owner':
