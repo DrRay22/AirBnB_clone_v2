@@ -43,9 +43,8 @@ exec {'symbolic link':
 }
 
 exec {'change owner':
-  provider => shell,
-  command  => 'sudo chown -R ubuntu:ubuntu /data/',
-  before   => Exec['put location'],
+  command => '/bin/chown -R ubuntu:ubuntu /data/',
+  before  => Exec['put location'],
 }
 
 exec {'put location':
