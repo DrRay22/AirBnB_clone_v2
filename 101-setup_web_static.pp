@@ -57,5 +57,4 @@ exec {'put location':
 exec {'restart Nginx':
   provider => shell,
   command  => 'sudo service nginx restart',
-  before   => Exec['create fisrt directory'],
 }
