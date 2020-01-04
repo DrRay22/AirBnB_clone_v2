@@ -39,15 +39,7 @@ exec {'content into html':
 exec {'symbolic link':
   provider => shell,
   command  => 'sudo ln -sf /data/web_static/releases/test/ /data/web_static/current',
-  before   => File['/data/'],
-}
-
-file {'/data/':
-  ensure  => directory,
-  owner   => 'ubuntu',
-  group   => 'ubuntu',
-  recurse => true,
-  before  => Exec['put location'],
+  before   => File['put location'],
 }
 
 exec {'put location':
@@ -59,4 +51,13 @@ exec {'put location':
 exec {'restart Nginx':
   provider => shell,
   command  => 'sudo service nginx restart',
+  before   => File['/data/']
+}
+
+file {'/data/':
+  ensure  => directory,
+  owner   => 'ubuntu',
+  group   => 'ubuntu',
+  recurse => true,
+  before  => Exec['put location'],
 }
