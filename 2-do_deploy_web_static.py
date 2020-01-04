@@ -22,7 +22,7 @@ def do_deploy(archive_path):
         name = shlex.split(name)
         name = name[-1]
 
-        wname = name.replace('.',' ')
+        wname = name.replace('.', ' ')
         wname = shlex.split(wname)
         wname = wname[0]
 
@@ -36,9 +36,7 @@ def do_deploy(archive_path):
         run("rm -rf {}/web_static".format(releases_path))
         run("rm -rf /data/web_static/current")
         run("ln -s {} /data/web_static_current".format(releases_path))
-
         print("New version deployed!")
-
         return True
     except:
         return False
