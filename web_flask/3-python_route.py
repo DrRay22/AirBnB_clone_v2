@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """ Script that runs an app with Flask framework """
-from flask import Flask, url_for
+from flask import Flask
 
 
 app = Flask(__name__)
@@ -27,11 +27,11 @@ def c_text(text):
 
 @app.route('/python/')
 @app.route('/python/<text>')
-def python_text(text=None):
+def python_text(text='is cool'):
     """ Function called with /python/<text> route """
-    if not text:
-        return 'Python is cool'
-    return 'Python %s' % text.replace('_', ' ')
+    if text is not 'is cool':
+        text = text.replace('_', ' ')
+    return 'Python %s' % text
 
 
 if __name__ == "__main__":
