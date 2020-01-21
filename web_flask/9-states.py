@@ -27,11 +27,11 @@ def display_html(id=None):
                                Table="States",
                                items=dict_to_html)
 
-    for state in states.values():
-        if state.id == id:
-            return render_template('9-states.html',
-                                   Table="State: {}".format(state.name),
-                                   items=state.cities)
+    k = "State.{}".format(id)
+    if k in states:
+        return render_template('9-states.html',
+                               Table="State: {}".format(states[k].name),
+                               items=states[k])
 
     return render_template('9-states.html',
                            items=None)
