@@ -41,7 +41,7 @@ class DBStorage:
         if cls:
             if type(cls) is str:
                 cls = eval(cls)
-            query = self.__session.query(State)
+            query = self.__session.query(cls)
             for elem in query:
                 key = "{}.{}".format(type(elem).__name__, elem.id)
                 dic[key] = elem
