@@ -39,7 +39,9 @@ class DBStorage:
         """
         dic = {}
         if cls:
-            query = self.__session.query(cls)
+            if type(cls) is str:
+                cls = eval(cls)
+            query = self.__session.query(State)
             for elem in query:
                 key = "{}.{}".format(type(elem).__name__, elem.id)
                 dic[key] = elem
@@ -75,3 +77,8 @@ class DBStorage:
         sec = sessionmaker(bind=self.__engine, expire_on_commit=False)
         Session = scoped_session(sec)
         self.__session = Session()
+
+    def close(self):
+        """ calls remove()
+        """
+        self.__session.close()

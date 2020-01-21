@@ -32,7 +32,7 @@ class FileStorage:
             for key in dictionary:
                 partition = key.replace('.', ' ')
                 partition = shlex.split(partition)
-                if (partition[0] == cls.__class__.__name__):
+                if (partition[0] == cls.__name__):
                     dic[key] = self.__objects[key]
             return (dic)
         else:
@@ -73,3 +73,8 @@ class FileStorage:
         if obj:
             key = "{}.{}".format(type(obj).__name__, obj.id)
             del self.__objects[key]
+
+    def close(self):
+        """ calls reload()
+        """
+        self.reload()
