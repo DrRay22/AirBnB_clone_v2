@@ -19,14 +19,15 @@ def teardown_session(exception):
 @app.route('/states/<id>', strict_slashes=False)
 def display_html(id=None):
     """ Function called with /states route """
-    states = storage.all(State).values()
+    states = storage.all(State)
 
     if not id:
-        return render_template('9-states.html',
+        dict_to_html = {value.id: value.name for value in states.values()}
+        return render_template('7-states_list.html',
                                Table="States",
-                               items=states)
+                               items=dict_to_html)
 
-    for state in states:
+    for state in states.values():
         if state.id == id:
             return render_template('9-states.html',
                                    Table="State: {}".format(state.name),
