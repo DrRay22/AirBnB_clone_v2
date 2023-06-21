@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" Script that runs an app with Flask framework """
+""" Scripts that run an app with Flask framework """
 from flask import Flask
 
 

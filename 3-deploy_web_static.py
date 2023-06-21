@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" Function that deploys """
+""" Function that can deploy """
 from datetime import datetime
 from fabric.api import *
 import os

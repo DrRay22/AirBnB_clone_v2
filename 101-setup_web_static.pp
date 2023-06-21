@@ -1,4 +1,4 @@
-# Script that configures Nginx server with some folders and files
+# Script that configures Nginx server with some folders and files in it
 
 exec {'update':
   provider => shell,

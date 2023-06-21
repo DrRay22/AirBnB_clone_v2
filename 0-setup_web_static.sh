@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Script that configures Nginx server with some folders and files
+# Script that configures Nginx server with some folders and files in it
 apt-get -y update
 apt-get -y install nginx
 service nginx start
